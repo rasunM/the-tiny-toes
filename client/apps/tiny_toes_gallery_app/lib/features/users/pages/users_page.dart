@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_toes_gallery_app/core/widgets/shared_app_bar.dart';
+import 'package:tiny_toes_gallery_app/features/album/pages/album_page.dart';
 import 'package:tiny_toes_gallery_app/features/users/models/user_model.dart';
 import 'package:tiny_toes_gallery_app/features/users/services/user_services.dart';
 import 'package:tiny_toes_gallery_app/features/users/widgets/user_card.dart';
@@ -49,7 +50,15 @@ class _UsersPageState extends State<UsersPage> {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: UserCard(user: users[index]),
+                child: UserCard(
+                  user: users[index],
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      AlbumPage.route(users[index].id, users[index].name),
+                    );
+                  },
+                ),
               );
             },
           );
