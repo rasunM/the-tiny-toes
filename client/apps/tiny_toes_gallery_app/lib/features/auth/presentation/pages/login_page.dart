@@ -4,6 +4,7 @@ import 'package:tiny_toes_gallery_app/features/auth/presentation/widgets/auth_bu
 import 'package:tiny_toes_gallery_app/features/auth/presentation/widgets/auth_field.dart';
 
 class LoginPage extends StatefulWidget {
+  static route() => MaterialPageRoute(builder: (context) => LoginPage());
   const LoginPage({super.key});
 
   @override

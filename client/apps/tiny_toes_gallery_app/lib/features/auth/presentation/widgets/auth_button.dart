@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_toes_gallery_app/core/theme/app_color_pallet.dart';
+import 'package:tiny_toes_gallery_app/features/users/pages/users_page.dart';
 
 class AuthButton extends StatelessWidget {
   final String buttonText;
@@ -17,7 +18,9 @@ class AuthButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(7),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, UsersPage.route());
+        },
         style: ElevatedButton.styleFrom(
           fixedSize: const Size(395, 55),
           backgroundColor: AppColorPallet.transparentColor,
