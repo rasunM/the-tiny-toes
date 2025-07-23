@@ -61,7 +61,10 @@ class _AlbumPageState extends State<AlbumPage> {
                 child: AlbumCard(
                   title: title,
                   onTap: () {
-                    Navigator.push(context, GalleryPage.route(1, 'hii'));
+                    Navigator.push(
+                      context,
+                      GalleryPage.route(albums[index].id, albums[index].title),
+                    );
                   },
                 ),
               );

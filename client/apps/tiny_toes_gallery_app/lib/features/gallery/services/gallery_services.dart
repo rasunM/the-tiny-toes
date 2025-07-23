@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:tiny_toes_gallery_app/features/album/models/album_model.dart';
+import 'package:tiny_toes_gallery_app/features/gallery/model/gallery_model.dart';
 
-class AlbumServices {
+class GalleryServices {
   static const String _baseUrl = 'https://jsonplaceholder.typicode.com';
 
-  static Future<List<AlbumModel>> fetchAlbumsByUserId(int userId) async {
-    final uri = Uri.parse('$_baseUrl/albums?userId=$userId');
+  static Future<List<GalleryPhotoModel>> fetchPhotosByAlbumId(
+    int albumId,
+  ) async {
+    final uri = Uri.parse('$_baseUrl/photos?albumId=$albumId');
 
     try {
       final response = await http.get(
@@ -19,14 +21,18 @@ class AlbumServices {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
-        return data.map((albumJson) => AlbumModel.fromJson(albumJson)).toList();
+        return data
+            .map((photoJson) => GalleryPhotoModel.fromJson(photoJson))
+            .toList();
       } else {
         throw Exception(
-          'Failed to load albums. Status code: ${response.statusCode}',
+          'Failed to load photos. Status code: ${response.statusCode}',
         );
       }
     } catch (e) {
       rethrow;
     }
   }
+
+  
 }
